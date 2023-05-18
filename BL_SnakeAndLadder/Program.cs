@@ -22,11 +22,17 @@
                 switch (option)
                 {
                     case NO_PLAY:
-                        Console.WriteLine("For this dice roll the move is  No Play");
+                        Console.WriteLine("For this dice roll the move is  No Play\n");
                         break;
                     case LADDER:
                         Console.WriteLine("For this dice roll the move is  Ladder");
                         plrPos += diceRoll;
+                        if (plrPos > MAX_POS)
+                        {
+                            plrPos = plrPos - diceRoll;
+                            Console.WriteLine("Player position can't be >100 hence not updating the position");
+                        }
+                        Console.WriteLine();
                         break;
                     case SNAKE:
                         Console.WriteLine("For this dice roll the move is  Snake");
@@ -34,7 +40,9 @@
                         if (plrPos < MIN_POS)
                         {
                             plrPos = MIN_POS;
+                            Console.WriteLine("Player position can't be -ve hence resetting to 0");
                         }
+                        Console.WriteLine();
                         break;
                 }
             }
